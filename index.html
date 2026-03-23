@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jesse Huang - CS Student @ SJTU | AI & ML Researcher">
+    <title>Jesse Huang | AI Researcher</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Jesse Huang</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Hi, I'm <span class="gradient-text">Jesse Huang</span>
+            </h1>
+            <p class="hero-subtitle">
+                <span class="typing-text"></span>
+            </p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">About Me</a>
+                <a href="#blog" class="btn btn-secondary">Read Blog</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/jessesjtu11" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:huangtun@chipltech.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">
+                        计算机专业大三学生，专注于 AI/ML 领域的研究与工程实践。
+                    </p>
+                    <p>
+                        目前在<strong>模型压缩</strong>方向进行科研工作，同时在国产芯片公司从事 <strong>AI Infrastructure</strong> 开发。
+                        对深度学习优化、模型部署和硬件加速充满热情。
+                    </p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>研究方向</h3>
+                            <p>Model Compression</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>实习领域</h3>
+                            <p>AI Infrastructure</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>所在院校</h3>
+                            <p>SJTU</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">CUDA</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> AI/ML</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Quantization</span>
+                            <span class="skill-tag">Pruning</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Jupyter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title">Learning Notes & Blog</h2>
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog posts will be dynamically loaded -->
+                <div class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Model Compression</span>
+                        <h3>深度学习模型量化技术详解</h3>
+                        <p>从理论到实践，探索模型量化在推理加速中的应用...</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2026-03-20</span>
+                            <span><i class="far fa-clock"></i> 10 min read</span>
+                        </div>
+                        <a href="blog/quantization.html" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">AI Infrastructure</span>
+                        <h3>国产AI芯片生态��察</h3>
+                        <p>实习期间对国产芯片AI软硬件生态的一些思考...</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2026-03-15</span>
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                        </div>
+                        <a href="blog/domestic-chips.html" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Deep Learning</span>
+                        <h3>Transformer 架构深度解析</h3>
+                        <p>从 Attention is All You Need 论文出发，剖析 Transformer 核心机制...</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2026-03-10</span>
+                            <span><i class="far fa-clock"></i> 15 min read</span>
+                        </div>
+                        <a href="blog/transformer.html" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects/Open Source Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects & Open Source</h2>
+            <div class="projects-grid">
+                <!-- GitHub contribution widget -->
+                <div class="github-stats">
+                    <img src="https://github-readme-stats.vercel.app/api?username=jessesjtu11&show_icons=true&theme=radical&hide_border=true&count_private=true" alt="GitHub Stats">
+                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=jessesjtu11&theme=radical&hide_border=true" alt="GitHub Streak">
+                </div>
+                
+                <!-- Projects will be fetched from GitHub API -->
+                <div class="project-list" id="projectList">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3><i class="fas fa-folder"></i> Coming Soon</h3>
+                            <span class="project-stars"><i class="fas fa-star"></i> --</span>
+                        </div>
+                        <p>Projects are being organized and will be showcased here soon...</p>
+                        <div class="project-tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Quantization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <a href="mailto:huangtun@chipltech.com">huangtun@chipltech.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/jessesjtu11" target="_blank">@jessesjtu11</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Shanghai, China 🇨🇳</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Jesse Huang. Making AI faster, one optimization at a time. ⚡</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

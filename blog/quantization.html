@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深度学习模型量化技术详解 | Jesse Huang</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .article {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        .article-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .article-meta {
+            color: var(--text-light);
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+        .article-content {
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        .article-content h2 {
+            margin: 2rem 0 1rem;
+            color: var(--primary-color);
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+        .article-content code {
+            background: var(--bg-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Jesse Huang</div>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#blog" class="nav-link">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="article container">
+        <a href="../index.html#blog" class="back-link">← Back to Blog</a>
+        
+        <div class="article-header">
+            <h1 class="article-title">深度学习模型量化技术详解</h1>
+            <div class="article-meta">
+                <span><i class="far fa-calendar"></i> 2026-03-20</span>
+                <span><i class="far fa-clock"></i> 10 min read</span>
+                <span><i class="fas fa-tag"></i> Model Compression</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <h2>什么是模型量化?</h2>
+            <p>
+                模型量化(Quantization)是一种重要的模型压缩技术,通过降低神经网络中权重和激活值的数值精度,
+                从而减少模型大小并加速推理过程。
+            </p>
+
+            <h2>量化的类型</h2>
+            <p><strong>1. 训练后量化 (Post-Training Quantization, PTQ)</strong></p>
+            <p>
+                在模型训练完成后直接进行量化,无需重新训练。适用于对精度损失要求不那么严格的场景。
+            </p>
+
+            <p><strong>2. 量化感知训练 (Quantization-Aware Training, QAT)</strong></p>
+            <p>
+                在训练过程中就模拟量化操作,使模型能够适应量化带来的精度损失。通常能获得更好的精度表现。
+            </p>
+
+            <h2>INT8 量化原理</h2>
+            <p>
+                将 FP32 (32位浮点数) 转换为 INT8 (8位整数),可以实现约 4 倍的模型压缩和显著的推理加速。
+                转换公式为:
+            </p>
+            <p><code>Q = round(x / scale) + zero_point</code></p>
+
+            <h2>实践经验</h2>
+            <p>
+                在实习期间,我在国产 AI 芯片上实现了多个模型的 INT8 量化部署。
+                通过量化感知训练,在保持精度损失小于 1% 的前提下,推理速度提升了约 3.5 倍。
+            </p>
+
+            <h2>未来展望</h2>
+            <p>
+                随着 AI 芯片对低精度计算的支持越来���好,INT4 甚至更低比特的量化将成为趋势。
+                混合精度量化也是一个很有前景的研究方向。
+            </p>
+
+            <p><em>这篇文章是我在学习和实践模型量化过程中的一些总结,欢迎交流讨论!</em></p>
+        </div>
+
+        <a href="../index.html#blog" class="back-link">← Back to Blog</a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Jesse Huang. Making AI faster, one optimization at a time. ⚡</p>
+        </div>
+    </footer>
+</body>
+</html>
