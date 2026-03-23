@@ -6,9 +6,9 @@
 }
 
 :root {
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
-    --accent-color: #f093fb;
+    --primary-color: #06b6d4;
+    --secondary-color: #10b981;
+    --accent-color: #34d399;
     --text-dark: #2d3748;
     --text-light: #718096;
     --bg-light: #f7fafc;
@@ -112,7 +112,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
     position: relative;
     padding: 2rem;
 }
@@ -130,7 +130,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(45deg, #fff, #f093fb);
+    background: linear-gradient(45deg, #fff, #34d399);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
