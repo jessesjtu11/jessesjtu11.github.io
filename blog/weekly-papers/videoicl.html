@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoICL: 让大模型"看一眼就会" | 每周论文阅读 | 王思源</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .article {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        .article-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        .article-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .article-meta {
+            color: var(--text-light);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+        .article-content {
+            line-height: 1.9;
+            color: var(--text-dark);
+        }
+        .article-content h2 {
+            margin: 2.5rem 0 1rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        .article-content h3 {
+            margin: 1.5rem 0 0.8rem;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .article-content p {
+            margin-bottom: 1.2rem;
+        }
+        .article-content code {
+            background: var(--bg-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-left: 4px solid var(--primary-color);
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .highlight-box p {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+        .paper-info {
+            background: var(--bg-light);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .paper-info p {
+            margin-bottom: 0.3rem;
+        }
+        .emoji-point {
+            font-size: 1.1em;
+        }
+        blockquote {
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        .series-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">王思源</div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../../index.html#blog" class="nav-link">Blog</a></li>
+                <li><a href="../../index.html#weekly-papers" class="nav-link">Weekly Papers</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="article container">
+        <a href="../../index.html#weekly-papers" class="back-link">← 返回每周论文</a>
+        
+        <div class="article-header">
+            <span class="series-tag">📚 每周论文阅读 #1</span>
+            <h1 class="article-title">VideoICL: 让大模型"看一眼就会"</h1>
+            <div class="article-meta">
+                <span><i class="far fa-calendar"></i> 2026-03-24</span>
+                <span><i class="far fa-clock"></i> 8 min read</span>
+                <span><i class="fas fa-tag"></i> Video Understanding</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="paper-info">
+                <p><strong>📄 论文:</strong> VideoICL: Confidence-based Iterative In-context Learning for Out-of-Distribution Video Understanding</p>
+                <p><strong>🔗 arXiv:</strong> <a href="https://arxiv.org/abs/2503.17476" target="_blank">2503.17476</a></p>
+                <p><strong>🏢 机构:</strong> Meta FAIR</p>
+            </div>
+
+            <h2>为什么我会注意到这篇论文</h2>
+            
+            <p>说实话，第一眼看到这篇论文的时候，吸引我的是 Meta FAIR 这个名字——毕竟是 LLaMA 的老家。但真正让我决定仔细读一读的，是标题里的 "In-context Learning" 和 "Video" 这两个词的组合。</p>
+            
+            <p>我们都知道 In-context Learning (ICL) 在 NLP 领域有多火，GPT 系列一路把它发扬光大。基本思路就是：<strong>我不告诉你规则，我给你看几个例子，你自己悟。</strong></p>
+            
+            <p>这不就是人类学习的方式吗？小时候学骑自行车，没人给你讲物理学定律，就是看别人骑、自己试、摔几跤就会了。</p>
+            
+            <p>但问题是，这招在视频领域一直玩不转。</p>
+
+            <h2>视频 ICL 为什么这么难？</h2>
+            
+            <p>想象一下，你要教一个模型识别"有人在滑板上做 kickflip"。</p>
+            
+            <p>在 NLP 里，你可以这样做：</p>
+            <blockquote>
+                "这是一个情感分类任务。<br>
+                例子1: '这部电影太棒了！' → 正面<br>
+                例子2: '简直是浪费时间' → 负面<br>
+                现在请判断: '还不错，值得一看'"
+            </blockquote>
+            
+            <p>简单粗暴，但有效。</p>
+            
+            <p>但在视频里呢？一个视频动辄几百帧，每一帧都是高维数据。你要塞几个"示例视频"进去？context window 直接爆炸。而且视频不像文本那样有明确的语义边界，模型很难理解"这段和那段到底是什么关系"。</p>
+            
+            <p>更要命的是，视频任务太多元了：动作识别、事件检测、时序推理、因果分析……每种任务的"正确示例"长得完全不一样。</p>
+
+            <h2>VideoICL 的解法：精挑细选 + 循环迭代</h2>
+            
+            <p>Meta 的研究者们想了一个挺聪明的办法，核心思路是两步走：</p>
+            
+            <div class="highlight-box">
+                <p><strong>🎯 第一步：别瞎选示例</strong></p>
+                <p>用一个检索模块，从数据库里找出跟当前视频"最像"的几个样本作为示例。不是随机选，是精挑细选。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <p><strong>🔄 第二步：不行就再来</strong></p>
+                <p>如果模型对自己的判断"不太确定"（置信度低），就换一批示例再试一次。迭代几轮，直到模型说"这次我有把握了"。</p>
+            </div>
+            
+            <p>你可以把它想象成一个学生做题：</p>
+            <ul>
+                <li>第一次看了几道例题，做出来一个答案，但心里没底</li>
+                <li>于是又翻了几道不一样的例题，重新做</li>
+                <li>反复几次，终于觉得"嗯，这次应该对了"</li>
+            </ul>
+            
+            <p>这个过程跟人类学习其实挺像的。我们在学新东西的时候，也经常会"换个角度想想"或者"再看几个例子确认一下"。</p>
+
+            <h2>效果到底怎么样？</h2>
+            
+            <p>论文里跑了一堆 benchmark，我挑几个有意思的说：</p>
+            
+            <ul>
+                <li><strong>Kinetics-600 (动作识别)</strong>: 比 zero-shot 高了 6.4%，比 few-shot 高 4.7%</li>
+                <li><strong>SSv2 (时序推理)</strong>: 提升更明显，+8.1%（这个数据集很看重动作的时间顺序）</li>
+                <li><strong>Epic-Kitchens (日常动作)</strong>: +7.3%</li>
+            </ul>
+            
+            <p>有意思的是，在那些"OOD"（Out-of-Distribution，即训练时没见过的类型）的测试集上，提升幅度反而更大。这说明 ICL 的泛化能力确实比传统 fine-tuning 要好。</p>
+            
+            <p>你想，fine-tuning 是"死记硬背"，ICL 是"举一反三"。面对没见过的题型，当然是后者更厉害。</p>
+
+            <h2>我觉得比较 exciting 的几个点</h2>
+            
+            <h3>1. 不用训练就能迁移</h3>
+            <p>传统做法是：每来一个新任务，就得收集数据、标注、训练。VideoICL 的思路是：只要给我几个好的示例，我当场就能学会。这对于长尾场景特别有价值——那些数据稀缺到根本没法训练的任务。</p>
+            
+            <h3>2. 置信度驱动的迭代</h3>
+            <p>这个 idea 简单但好用。模型"知道自己不知道"，这本身就很有价值。在实际部署中，低置信度的样本可以交给人工复核，这就是一个很自然的 human-in-the-loop 机制。</p>
+            
+            <h3>3. 对 infra 的启发</h3>
+            <p>作为一个在做 AI infra 的实习生，我在想：如果以后 ICL 成为主流范式，那对推理系统的设计会有很大影响。示例检索要快、context 管理要灵活、置信度估计要准……这些都是新的工程挑战。</p>
+
+            <h2>一些局限和我的疑问</h2>
+            
+            <p>当然，这篇论文也不是完美的：</p>
+            
+            <ul>
+                <li><strong>延迟问题</strong>: 迭代多次意味着多次推理，在实时场景下可能吃不消</li>
+                <li><strong>示例库依赖</strong>: 检索质量很关键，如果库里的示例本身质量不高，garbage in garbage out</li>
+                <li><strong>长视频处理</strong>: 论文里的视频都不长，真正的长视频（比如电影、监控）怎么办？</li>
+            </ul>
+            
+            <p>另外我有个疑问：置信度阈值怎么定？论文里是固定的，但不同任务、不同场景，"多少置信度算够"应该是不一样的吧？</p>
+
+            <h2>写在最后</h2>
+            
+            <p>总的来说，VideoICL 代表了一个有意思的方向：<strong>把大模型的"悟性"从语言迁移到视觉，从静态图像迁移到动态视频。</strong></p>
+            
+            <p>我一直觉得，真正通用的智能应该是"看一眼就会"的，而不是"刷一万道题才会"。人类学新技能的效率之所以高，很大程度上是因为我们擅长类比、迁移、举一反三。</p>
+            
+            <p>如果 AI 也能做到这一点，那很多现在看起来"数据不够没法做"的问题，可能就有新的解法了。</p>
+            
+            <p>这大概就是这篇论文让我觉得 exciting 的原因吧
